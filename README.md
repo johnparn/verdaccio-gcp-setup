@@ -1,4 +1,4 @@
-= Verdaccio setup as container at Google Cloud Kubernetes
+# Verdaccio setup as container at Google Cloud Kubernetes
 
 Documentation how to setup up a private repo with verdaccio on Google Cloud Kubernetes. The repo is configured to only allow authenticated users to access, and of course publish, packages. It is assumed that you have installed `gcloud` and `kubectl` from the Google Cloud SDK. 
 
@@ -33,13 +33,13 @@ Open your browser at http://localhost:8888/ui/ and select token and enter the to
 The installation of verdaccio is done using Helm, for the ease of it.
 
 
-== Install Helm client on Mac
+## Install Helm client on Mac
 
 ```
 brew install kubernetes-helm
 ```
 
-== Install tiller and permissions to kubernetes
+## Install tiller and permissions to kubernetes
 
 Add permissions
 
@@ -53,7 +53,7 @@ Install Tiller in kubernetes
 helm init --service-account tiller --upgrade
 ```
 
-== Install Verdaccio with public IP
+## Install Verdaccio with public IP
 
 Get static IP for service
 
@@ -77,7 +77,7 @@ Check installation using kubernetes dashboard at http://localhost:8888/ui/
 You should soon be able to check your shiny new private repo at the assigned IP - http://<ASSIGNED_IP>:<PORT>
 
 
-= Using Yarn with new private repo
+# Using Yarn with new private repo
 
 When using yarn I couldn't get it working out of the box. I signed in with `yarn login` but when trying to add a new package with `yarn add mypackage` it always failed with `unregistered users are not allowed to access package mypackage".`
 
