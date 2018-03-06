@@ -71,18 +71,17 @@ Now for the actual installation:
 
 helm install --name=myname -f values.yaml stable/verdaccio
 
+If you need to upgrade the current release use `upgrade`:
+
+```
+helm upgrade -f values.yaml myname stable/verdaccio
+```
 
 Check installation using kubernetes dashboard at http://localhost:8888/ui/
 
 You should soon be able to check your shiny new private repo at the assigned IP - http://<ASSIGNED_IP>:<PORT>
 
 
-# Using Yarn with new private repo
+# Using Yarn
 
-When using yarn I couldn't get it working out of the box. I signed in with `yarn login` but when trying to add a new package with `yarn add mypackage` it always failed with `unregistered users are not allowed to access package mypackage".`
-
-I had to wipe my `~/.npmrc`from all other stuff and added this line to make it work:
-
-```
-registry=http://username:password@domainname:4873/
-```
+When using yarn I couldn't fetch packages when setting access of the packages to `$authenticated` in `values.yaml`. It was possible to sign in the web gui and to publish packages, but accessing them didn't work.
